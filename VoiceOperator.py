@@ -33,6 +33,8 @@ class VoiceOperator:
 			self.CreateFolder(keyWords[2])
 		elif(keyWords[0]=='google'):
 			self.GoogleIt(keyWords[1])
+		elif(keyWords[0]=='play'):
+			self.PlayMusic(keyWords[1])
 
 	def OpenFolder(self,path):
 		 #Only for linux
@@ -50,3 +52,7 @@ class VoiceOperator:
 		url = 'https://www.google.co.in/search?&q='
 		chrome_path = 'open -a /Applications/Google\ Chrome.app %s'
 		webbrowser.get(using='google-chrome').open(url+searchQuery)
+
+	def PlayMusic(self,music):
+		path=self.defaultPath+music
+		os.system('rhythmbox '+path)
