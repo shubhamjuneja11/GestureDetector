@@ -17,23 +17,23 @@ class DisplayText:
         color = (randrange(256), randrange(256), randrange(256))
         txt = font.render(txt, True, color)
         timer = 10
-        done = False
+        '''done = False
         while not done:
             for event in pg.event.get():
                 if event.type == pg.KEYDOWN:
                     if event.key == pg.K_ESCAPE:
                         done = True
+                    '''
+        timer -= 1
+        # Update the text surface and color every 10 frames.
+        if timer <= 0:
+            timer = 10
+            color = (randrange(256), randrange(256), randrange(256))
+            txt = font.render(txt, True, color)
 
-            timer -= 1
-            # Update the text surface and color every 10 frames.
-            if timer <= 0:
-                timer = 10
-                color = (randrange(256), randrange(256), randrange(256))
-                txt = font.render(random_letters(randrange(5, 21)), True, color)
+        screen.fill((30, 30, 30))
+        screen.blit(txt, txt.get_rect(center=screen_rect.center))
 
-            screen.fill((30, 30, 30))
-            screen.blit(txt, txt.get_rect(center=screen_rect.center))
-
-            pg.display.flip()
-            clock.tick(30)
+        pg.display.flip()
+        clock.tick(30)
         pg.quit()
